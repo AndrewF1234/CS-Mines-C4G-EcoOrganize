@@ -1,3 +1,30 @@
+<?php
+session_start();
+
+  include("connection.php");
+  include("function.php");
+
+  // if someone is trying to signup
+  if($_SERVER['REQUEST_METHOD'] == "POST") {
+      $email = $_POST['email'];
+      $password = $_POST['password'];
+
+      # THIS ONLY CHECKS IF IT IS EMPTY CHECK FOR PASSWORD LENGTH AND NUMERIC USERNAME LATER
+      if(!empty($email) && !empty($password)) {
+        $user_id = random_num(20)
+        $query = "insert into users (user_id, username, password) values ('$user_id', '$email', '$password')"
+
+        mysqli_query($query)
+
+        # can redirect signup to login 
+        die;
+      } else {
+        echo "remake username/password"; // Needs to handle both types (username/password)
+      }
+  }
+
+?>
+
 <!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
@@ -24,7 +51,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <!--Logo, can be placed somewhere else, in navbar for example-->
-    <a href="index.html"> <img src="ecoorganize.png" alt="Ecoorganize logo" width="35%" height="auto"></a>
+    <a href="index.php"> <img src="/images/ecoorganize.png" alt="Ecoorganize logo" width="35%" height="auto"></a>
 
     <!--navbar-->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -36,13 +63,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html" style="background-color: rgb(206, 206, 206);">Home</a>
+              <a class="nav-link active" aria-current="page" href="index.php" style="background-color: rgb(206, 206, 206);">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="acc.html">Account</a>
+              <a class="nav-link" href="acc.php">Account</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="tech.html">Create a petition</a>
+              <a class="nav-link" href="tech.php">Create a petition</a>
             </li>
           </ul>
         </div>
@@ -57,15 +84,15 @@
       <div class="card" style="width: 45%; float:right" >
         <h4>Sign up:</h4>
         <div class="card-body">
-          <form>
+          <form method="post">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
+              <input type="password" class="form-control" id="exampleInputPassword1" name="password">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
