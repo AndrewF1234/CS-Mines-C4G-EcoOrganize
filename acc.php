@@ -1,27 +1,68 @@
 <?php
 session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
   include("connection.php");
-  include("function.php");
+  include("functions.php");
 
   // if someone is trying to signup
-  if($_SERVER['REQUEST_METHOD'] == "POST") {
-      $email = $_POST['email'];
-      $password = $_POST['password'];
+  if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if (isset($_POST['sign-up'])) {
+      $email = $_POST['sign-up-email'];
+      $password = $_POST['sign-up-password'];
+      // Sign up
+      // THIS ONLY CHECKS IF IT IS EMPTY CHECK FOR PASSWORD LENGTH AND NUMERIC USERNAME LATER
+      if (!empty($email) && !empty($password)) {
+          $user_id = random_num(20);
+          $query = "INSERT INTO login_db (user_id, username, password) VALUES ('$user_id', '$email', '$password')";
 
-      # THIS ONLY CHECKS IF IT IS EMPTY CHECK FOR PASSWORD LENGTH AND NUMERIC USERNAME LATER
-      if(!empty($email) && !empty($password)) {
-        $user_id = random_num(20)
-        $query = "insert into users (user_id, username, password) values ('$user_id', '$email', '$password')"
+          mysqli_query($con, $query);
 
-        mysqli_query($query)
-
-        # can redirect signup to login 
-        die;
+          // can redirect signup to login 
+          header("Location: index.php");
+          die;
       } else {
-        echo "remake username/password"; // Needs to handle both types (username/password)
+          echo "Remake username/password"; // Needs to handle both types (username/password)
       }
+    } 
+    else if (isset($_POST['log-in'])) {
+      $email = $_POST['log-in-email'];
+      $password = $_POST['log-in-password'];
+      // THIS ONLY CHECKS IF IT IS EMPTY CHECK FOR PASSWORD LENGTH AND NUMERIC USERNAME LATER
+      if (!empty($email) && !empty($password)) {
+          $query = "SELECT * FROM login_db WHERE username = '$email' LIMIT 1";
+
+          $result = mysqli_query($con, $query);
+
+          if ($result) {
+              if ($result && mysqli_num_rows($result) > 0) {
+                  // if the thing above is true it will get user data from the database as well
+                  $user_data = mysqli_fetch_assoc($result);
+
+                  if ($user_data['password'] === $password) {
+                      $_SESSION['user_id'] = $user_data['user_id'];
+                      echo '<div class="success-message">Login successful!</div>';
+
+
+                      header("Location: index.php");
+                      die;
+                  }
+              }
+          }
+          echo "Bad password";
+
+          // can redirect signup to login 
+          header("Location: index.php");
+          die;
+      } else {
+          echo "No username/password";
+      }
+    }
   }
+
+  
 
 ?>
 
@@ -87,14 +128,14 @@ session_start();
           <form method="post">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="sign-up-email">
               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+              <input type="password" class="form-control" id="exampleInputPassword1" name="sign-up-password">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" name="sign-up">Sign Up</button>
           </form>
         </div>
       </div>
@@ -102,16 +143,16 @@ session_start();
       <div class="card" style="width: 45%; float:left;" >
         <h4>Log in:</h4>
         <div class="card-body">
-          <form>
+          <form method="post">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="log-in-email">
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
+              <input type="password" class="form-control" id="exampleInputPassword1" name="log-in-password">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" name="log-in">Log in</button>
           </form>
         </div>
       </div>
