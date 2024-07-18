@@ -1,3 +1,21 @@
+
+<?php
+    session_start();
+    include("connection.php");
+    include("functions.php");
+
+    $user_data = check_login($con);
+    if (isset($_SESSION['user_id'])) {
+      $user_id = $_SESSION['user_id'];
+      $sql = "SELECT * FROM login_db WHERE id = ?";
+      $stmt = mysqli_prepare($con, $sql);
+      mysqli_stmt_bind_param($stmt, "i", $user_id);
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+      $user_data = mysqli_fetch_assoc($result);
+    }
+?>
+
 <!DOCTYPE html>
 
 <?php include('title-head.html'); ?>
@@ -70,7 +88,7 @@
 
         <br>
         <h5>Name:</h5>
-        <h6 id="personName">pull from database to put name here</h6>
+        <h6 id="personName">{{username}}</h6>
 
         <br>
         <h5>Email:</h5>
