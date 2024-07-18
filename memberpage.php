@@ -13,7 +13,7 @@ session_start();
 
 <?php include('title-head.html'); ?>
 
-<?php include('member-meau-header.html'); ?>
+<?php include('member-menu-header.html'); ?>
 
 <body>
     <!--required for bootstrap to work-->

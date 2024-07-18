@@ -1,7 +1,6 @@
+
 <?php
     session_start();
-
-
     include("connection.php");
     include("functions.php");
 
@@ -11,48 +10,42 @@
 <!DOCTYPE html>
 
 <?php include('title-head.html'); ?>
-
-<?php include('member-meau-header.html'); ?>
+<?php include('member-menu-header.html'); ?>
 
 <body>
+    
+
     <h1>Petition Details</h1>
+
     <?php
-        // Include the connection script (replace with your connection details)
         require_once('connection.php');
 
-        // Get the petition ID from the URL (if provided)
-        $petition_id = isset($_GET['id']) ? (int)$_GET['id'] : null;
+        $petition_id = $_SESSION['user_id'];
 
-        // If an ID is provided, attempt to retrieve petition data
         if ($petition_id) {
             $sql = "SELECT * FROM petitions_db WHERE owner_id = $petition_id";
-            $result = mysqli_query($conn, $sql);
+            $result = mysqli_query($con, $sql);
 
             if (mysqli_num_rows($result) == 1) {
                 $petition = mysqli_fetch_assoc($result);
-
-                // Display petition details
-                echo "<h2>" . $petition['label'] . "</h2>";
-                echo "<p>" . $petition['body'] . "</p>";
-
+                ?>
+                <h2><?php echo $petition['label']; ?></h2>
+                <p><?php echo $petition['body']; ?></p>
+                <?php
                 if ($petition['link'] != null) {
-                    echo "<a href='" . $petition['link'] . "'>Learn More</a>";
+                    ?>
+                    <a href="<?php echo $petition['link']; ?>">Learn More</a>
+                    <?php
                 }
-
-                echo "<p>Signatures: " . $petition['signatures'] . " / " . $petition['signatures_needed'] . "</p>";
-                // Add a form to sign the petition (replace with your logic)
-                echo '<form action="sign.php" method="post">
-                    <input type="hidden" name="petition_id" value="' . $petition['owner_id'] . '">
-                    <button type="submit">Sign Petition</button>
-                </form>';
+                ?>
+                <p>Signatures: <?php echo $petition['signatures']; ?> / <?php echo $petition['signatures_needed']; ?></p>
+                <?php
             } else {
                 echo "<p>Petition not found!</p>";
             }
         } else {
             echo "<p>Please provide a petition ID.</p>";
         }
-
-        // Close the connection
         mysqli_close($con);
     ?>
 </body>
