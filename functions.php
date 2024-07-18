@@ -11,7 +11,7 @@ function check_login($con) {
             return $result->fetch_assoc();
         }
     }
-    header("Location: acc.php");
+    header("Location: login.php");
     die;
 }
 

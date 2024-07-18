@@ -26,16 +26,12 @@
                       echo '<div class="success-message">Login successful!</div>';
 
 
-                      header("Location: index.php");
+                      header("Location: memberpage.php");
                       die;
                   }
               }
           }
           echo "Bad password";
-
-          // can redirect signup to login 
-          header("Location: index.php");
-          die;
       } else {
           echo "No username/password";
       }

@@ -1,0 +1,68 @@
+<script>
+    function updateColor() {
+      const currentPage = window.location.pathname.split("/").pop();
+      const heading = document.querySelector("a[href='" + currentPage + "']");
+      heading.style.backgroundColor = "rgb(206, 206, 206)";
+    }
+    window.onload = updateColor;
+  </script>
+  <img src="/images/ecoorganize.png" alt="Ecoorganize logo" width="35%" height="auto" style="margin: 0 auto;display: block;"></a>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Menu</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="memberpage.php"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a 
+              class="nav-link" 
+              href="account.php"
+              >My Account</a>
+          </li>
+          <li class="nav-item">
+            <a 
+              class="nav-link" 
+              href="create-petition.php"
+              >Create Petition</a>
+          </li>
+          <li class="nav-item">
+            <a 
+              class="nav-link" 
+              href="viewpetition.php"
+              >View My Petitions</a>
+          </li>
+        </ul>
+      </div>
+      <div style="text-align: right;">
+        <a href="logout.php" class="logout-button">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <style>
+    .logout-button {
+      background-color: lightgray;
+      color: black;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>

@@ -4,15 +4,16 @@
 
     include("connection.php");
     include("functions.php");
+
+    $user_data = check_login($con);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petition</title>
-</head>
+
+<?php include('title-head.html'); ?>
+
+<?php include('member-meau-header.html'); ?>
+
 <body>
     <h1>Petition Details</h1>
     <?php
