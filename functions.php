@@ -29,3 +29,12 @@ function random_num($length) {
 
     return $text;
 }
+
+function validateZip($zip) {
+  
+    if (preg_match("/^\d{5}$/", $zip)) {
+      return true;
+    }
+  
+    return "Must Be A Valid Zip Code";
+}
