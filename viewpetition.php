@@ -41,10 +41,10 @@
                 <p>Signatures: <?php echo $petition['signatures']; ?> / <?php echo $petition['signatures_needed']; ?></p>
                 <?php
             } else {
-                echo "<p>Petition not found!</p>";
+                echo "<p>No Petitions Found.</p>";
             }
         } else {
-            echo "<p>Please provide a petition ID.</p>";
+            echo "<p>No Petitions Found.</p>";
         }
         mysqli_close($con);
     ?>

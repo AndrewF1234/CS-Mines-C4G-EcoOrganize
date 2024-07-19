@@ -25,7 +25,7 @@ session_start();
     <p><span style="color:white">s</span>Enter your zip code to view nearby petitions:</p>
 
     <div class="input-group input-group-lg" style="width:65%">
-      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" maxlength="5">
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 
