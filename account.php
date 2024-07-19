@@ -18,9 +18,9 @@
 
 <!DOCTYPE html>
 
-<?php include('title-head.html'); ?>
+<?php include('/title-head.html'); ?>
 
-<?php include('member-menu-header.html'); ?>
+<?php include('/member-menu-header.html'); ?>
 
 <body>
 
@@ -134,7 +134,7 @@
                     <input type="password" class="form-control" id="exampleInputZip" name="change-zip">
                   </div>
                 <!--button refreshes page on submit so correct info will be displayed up above, and repulled from the database-->
-                <button type="submit" class="btn btn-primary" name="sign-up" href="accountPage.html">Change info</button>
+                <button type="submit" class="btn btn-primary" name="sign-up" href="account.php">Change info</button>
               </form>
         </div>
     </div>
