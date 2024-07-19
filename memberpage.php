@@ -11,9 +11,9 @@ session_start();
 
 <!DOCTYPE html>
 
-<?php include('/title-head.html'); ?>
+<?php include('title-head.html'); ?>
 
-<?php include('/member-menu-header.html'); ?>
+<?php include('member-menu-header.html'); ?>
 
 <body>
     <!--required for bootstrap to work-->
