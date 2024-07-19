@@ -17,8 +17,9 @@ error_reporting(E_ALL);
     // THIS ONLY CHECKS IF IT IS EMPTY CHECK FOR PASSWORD LENGTH AND NUMERIC USERNAME LATER
     $validation = validateZip($zip);
 
-    if ($validation === true) {
-      if (!empty($email) && !empty($password)) {
+    
+    if (!empty($email) && !empty($password) && !empty($name) && !empty($zip)) {
+      if ($validation === true) {
         $user_id = random_num(20);
         $query = "INSERT INTO login_db (user_id, username, password, name, zip) VALUES ('$user_id', '$email', '$password', '$name', '$zip')";
 
@@ -27,14 +28,14 @@ error_reporting(E_ALL);
         // can redirect signup to login 
         header("Location: memberpage.php");
         die;
-      } else {
-          echo "Remake username/password"; // Needs to handle both types (username/password)
       }
-    }
-    else {
-      $_SESSION['error'] = $validation;
-      header("Location: signup.php");
-      die;
+      else {
+        $_SESSION['error'] = $validation;
+        header("Location: signup.php");
+        die;
+      }
+    } else {
+      $_SESSION['error'] = "One or More Required Fields is Empty"; // Needs to handle both types (username/password)
     }
   }
 ?>
@@ -67,7 +68,7 @@ error_reporting(E_ALL);
               <label class="form-label">Zip Code</label>
               <input type="zip" class="form-control" id="identification" name="zip-code" maxlength="5">
             </div>
-            <?php if (isset($_SESSION['error'])) { ?>
+            <?php if (isset($_SESSION['error']) && $_SESSION['error'] === "Must Be A Valid Zip Code") { ?>
               <p style="color: red;"><?php echo $_SESSION['error']; ?></p>
               <?php unset($_SESSION['error']); ?>
             <?php } ?>
@@ -79,6 +80,10 @@ error_reporting(E_ALL);
           </form>
         </div>
       </div>
+      <?php if (isset($_SESSION['error']) && $_SESSION['error'] === "One or More Required Fields is Empty") { ?>
+        <p style="color: red;"><?php echo $_SESSION['error']; ?></p>
+        <?php unset($_SESSION['error']); ?>
+      <?php } ?>
       
 
     </body>

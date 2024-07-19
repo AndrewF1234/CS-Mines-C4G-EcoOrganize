@@ -31,9 +31,9 @@
                   }
               }
           }
-          echo "Bad password";
+          $_SESSION['error'] =  "Bad password";
       } else {
-          echo "No username/password";
+          $_SESSION['error'] =  "Must enter a Username and Password";
       }
     }
 ?>
@@ -67,6 +67,10 @@
               <label for="exampleInputPassword1" class="form-label">Password</label>
               <!-- <a href="">Forgot Password?</a> -->
               <input type="password" class="form-control" id="exampleInputPassword1" name="log-in-password">
+              <?php if (isset($_SESSION['error'])) { ?>
+                <p style="color: red;"><?php echo $_SESSION['error']; ?></p>
+                <?php unset($_SESSION['error']); ?>
+              <?php } ?>
             </div>
             <button type="submit" class="btn btn-primary" name="log-in">Log in</button>
           </form>
