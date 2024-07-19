@@ -15,7 +15,9 @@
 <body>
     
 
-    <h1>Petition Details</h1>
+    <link rel="stylesheet" href="/css/viewpetition.css">
+
+    <h1 class="fancy-header">Petition Details</h1>
 
     <?php
         require_once('connection.php');
