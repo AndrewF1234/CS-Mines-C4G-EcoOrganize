@@ -55,9 +55,6 @@ session_start();
               <li class="nav-item">
                 <a class="nav-link" href="acc.php">Account</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="tech.php">Create a petition</a>
-              </li>
             </ul>
           </div>
         </div>

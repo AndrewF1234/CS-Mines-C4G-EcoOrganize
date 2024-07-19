@@ -60,5 +60,5 @@ session_start();
       </nav>
 
 
-      <h3><a href="acc.php">Sign up or log in</a> to create a petition</h3>
+      <h3><a href="viewacc.php">View Account Details</h3>
     </body>
