@@ -85,7 +85,7 @@
 
     <div class="card" style="width:48%; float:right; height:auto">
         <h2>Account info:</h2>
-
+        
         <br>
         <h5>Name:</h5>
         <h6 id="personName"><?php echo $_SESSION['name']; ?></h6>
