@@ -8,7 +8,13 @@
 ?>
 
 <!DOCTYPE html>
-
+<style>
+.card {
+  display: flex;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+    </style>
 <?php include('title-head.html'); ?>
 <?php include('member-menu-header.html'); ?>
 
@@ -32,16 +38,20 @@
           while ($petition = mysqli_fetch_assoc($result)) {
             // Display each petition's details within the loop
             ?>
-            <h1><?php echo $petition['title']; ?></h1>
-            <p><?php echo $petition['body']; ?></p>
-            <?php
-            if ($petition['link'] != null) {
-              ?>
-              <a href="<?php echo $petition['link']; ?>">Learn More</a>
-              <?php
-            }
-            ?>
-            <p>Signatures: <?php echo $petition['signatures']; ?> / <?php echo $petition['signatures_needed']; ?></p>
+            <div class="card" style="width: 100%; height:auto">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $petition['title']; ?></h5>
+                        <p class="card-text"><?php echo $petition['body']; ?></p>
+                        <?php
+                         if ($petition['link'] != null) {
+                        ?>
+                    <a target="_blank" href="<?php echo $petition['link']; ?>" class="btn btn-primary" style="background-color:rgb(155, 219, 155); border-color:rgb(155, 219, 155)">Learn more</a>
+                    <?php
+                }?>
+                 <p>Signatures: <?php echo $petition['signatures']; ?> / <?php echo $petition['signatures_needed']; ?></p>
+                    </div>
+
+                </div>
             <hr>  <?php
           }
         } else {
