@@ -31,7 +31,7 @@
             if (mysqli_num_rows($result) == 1) {
                 $petition = mysqli_fetch_assoc($result);
                 ?>
-                <h2><?php echo $petition['label']; ?></h2>
+                <h1><?php echo $petition['title']; ?></h1>
                 <p><?php echo $petition['body']; ?></p>
                 <?php
                 if ($petition['link'] != null) {
