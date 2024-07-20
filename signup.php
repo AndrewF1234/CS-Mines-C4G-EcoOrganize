@@ -20,7 +20,7 @@ error_reporting(E_ALL);
     
     if (!empty($email) && !empty($password) && !empty($name) && !empty($zip)) {
       if ($validation === true) {
-        $user_id = random_num(20);
+        $user_id = random_num();
         $query = "INSERT INTO login_db (user_id, username, password, name, zip) VALUES ('$user_id', '$email', '$password', '$name', '$zip')";
 
         mysqli_query($con, $query);

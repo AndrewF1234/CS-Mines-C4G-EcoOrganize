@@ -13,7 +13,7 @@
     $description = $_POST['description'];
     $signatures = $_POST['signatures'];
     $link = $_POST['link'];
-    $petition_id = random_num(20);
+    $petition_id = random_num();
 
     $query = "INSERT INTO petitions_db (owner_id, petition_id, owner_name, zip_code, title, body, signatures_needed, link) VALUES ('" . $_SESSION['user_id'] . "', '$petition_id', '" . $_SESSION['name'] . "', '" . $_SESSION['zip'] . "', '$title', '$description', '$signatures', '$link')";
 
