@@ -1,0 +1,9 @@
+{
+    "phpserver.phpConfigPath": "C:\\xammp\\php\\php.ini",
+    "php.validate.executablePath": "C:\\xammp\\php\\php.exe",
+    "launch": {
+        
+        "configurations": [],
+        "compounds": []
+    }
+}
