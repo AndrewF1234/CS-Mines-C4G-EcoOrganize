@@ -88,15 +88,15 @@
 
         <br>
         <h5>Name:</h5>
-        <h6 id="personName">{{username}}</h6>
+        <h6 id="personName"><?php echo $_SESSION['name']; ?></h6>
 
         <br>
         <h5>Email:</h5>
-        <h6 id="personEmail">pull email from db and replace this text</h6>
+        <h6 id="personEmail"><?php echo $_SESSION['username']; ?></h6>
 
         <br>
         <h5>Location:</h5>
-        <h6 id="locationName">Pull from db put location/zipcode here</h6>
+        <h6 id="locationName"><?php echo $_SESSION['zip']; ?></h6>
 
         <button id="editButton">Click here to edit account info</button>
         <script>

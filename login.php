@@ -22,8 +22,8 @@
                   $user_data = mysqli_fetch_assoc($result);
 
                   if ($user_data['password'] === $password) {
-                      $_SESSION['user_id'] = $user_data['user_id'];
-                      echo '<div class="success-message">Login successful!</div>';
+                    retrieve_data($user_data);
+                    echo '<div class="success-message">Login successful!</div>';
 
 
                       header("Location: memberpage.php");

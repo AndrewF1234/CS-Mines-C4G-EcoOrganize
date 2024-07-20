@@ -25,6 +25,14 @@ error_reporting(E_ALL);
 
         mysqli_query($con, $query);
 
+        // $new = "SELECT * FROM login_db WHERE username = '$email' LIMIT 1";
+
+        // $result = mysqli_query($con, $new);
+
+        // $user_data = mysqli_fetch_assoc($result);
+
+        // retrieve_data($user_data);
+
         // can redirect signup to login 
         header("Location: memberpage.php");
         die;
