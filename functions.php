@@ -24,20 +24,14 @@ function check_login($con) {
     die;
 }
 
-function random_num($length) {
-    $text = "";
-    if($length < 5) {
-        $length = 5;
-    }
-
-    $len = rand(4,$length);
-
-    for ($i = 0; $i < $len; $i++) {
-        $text .= rand(0,9);
-    }
-
-    return $text;
-}
+function random_num() {
+    // Minimum and maximum values
+    $min = 100;
+    $max = 10000000;
+  
+    // Use random_int for cryptographically secure random numbers
+    return random_int($min, $max);
+  }
 
 function validateZip($zip) {
   
