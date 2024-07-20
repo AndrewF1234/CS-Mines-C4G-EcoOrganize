@@ -1,5 +1,14 @@
 <?php
 
+function retrieve_data($user_data) {
+    $_SESSION['user_id'] = $user_data['user_id'];
+    $_SESSION['id'] = $user_data['id'];
+    $_SESSION['name'] = $user_data['name'];
+    $_SESSION['zip'] = $user_data['zip'];
+    $_SESSION['username'] = $user_data['username'];
+    $_SESSION['date'] = $user_data['date'];
+}
+
 function check_login($con) {
     if (isset($_SESSION['user_id'])) {
         $id = $_SESSION['user_id'];
@@ -11,7 +20,7 @@ function check_login($con) {
             return $result->fetch_assoc();
         }
     }
-    header("Location: acc.php");
+    header("Location: login.php");
     die;
 }
 
@@ -28,4 +37,13 @@ function random_num($length) {
     }
 
     return $text;
+}
+
+function validateZip($zip) {
+  
+    if (preg_match("/^\d{5}$/", $zip)) {
+      return true;
+    }
+  
+    return "Must Be A Valid Zip Code";
 }

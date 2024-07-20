@@ -1,55 +1,29 @@
+
+<?php
+    session_start();
+    include("connection.php");
+    include("functions.php");
+
+    $user_data = check_login($con);
+    if (isset($_SESSION['user_id'])) {
+      $user_id = $_SESSION['user_id'];
+      $sql = "SELECT * FROM login_db WHERE id = ?";
+      $stmt = mysqli_prepare($con, $sql);
+      mysqli_stmt_bind_param($stmt, "i", $user_id);
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+      $user_data = mysqli_fetch_assoc($result);
+    }
+?>
+
 <!DOCTYPE html>
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>account page</title>
 
-  <!-- Favicon and touch icons -->
-  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
-  <link rel="manifest" href="/icon/site.webmanifest">
-  <link rel="mask-icon" href="/icon/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
-  
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<?php include('title-head.html'); ?>
 
-</head>
+<?php include('member-menu-header.html'); ?>
 
 <body>
-    <!--required for bootstrap to work-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-    <!--Logo, can be placed somewhere else, in navbar for example-->
-    <a href="index.php"> <img src="/images/ecoorganize.png" alt="Ecoorganize logo" width="35%" height="auto"></a>
-
-    <!--navbar-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Menu</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.php" style="background-color: rgb(206, 206, 206);">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="acc.php">Account</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="tech.php">Create a petition</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <hr>
     <!--card for liked petitions, maybe a scrollable list inside-->
     <div class="card" style="width: 48%; float:left">
         <div class="card overflow-auto" id="petitionsbox" style="width: 100%; height:400px; float:left;" >
@@ -111,18 +85,18 @@
 
     <div class="card" style="width:48%; float:right; height:auto">
         <h2>Account info:</h2>
-
+        
         <br>
         <h5>Name:</h5>
-        <h6 id="personName">pull from database to put name here</h6>
+        <h6 id="personName"><?php echo $_SESSION['name']; ?></h6>
 
         <br>
         <h5>Email:</h5>
-        <h6 id="personEmail">pull email from db and replace this text</h6>
+        <h6 id="personEmail"><?php echo $_SESSION['username']; ?></h6>
 
         <br>
         <h5>Location:</h5>
-        <h6 id="locationName">Pull from db put location/zipcode here</h6>
+        <h6 id="locationName"><?php echo $_SESSION['zip']; ?></h6>
 
         <button id="editButton">Click here to edit account info</button>
         <script>
@@ -160,7 +134,7 @@
                     <input type="password" class="form-control" id="exampleInputZip" name="change-zip">
                   </div>
                 <!--button refreshes page on submit so correct info will be displayed up above, and repulled from the database-->
-                <button type="submit" class="btn btn-primary" name="sign-up" href="accountPage.html">Change info</button>
+                <button type="submit" class="btn btn-primary" name="sign-up" href="account.php">Change info</button>
               </form>
         </div>
     </div>

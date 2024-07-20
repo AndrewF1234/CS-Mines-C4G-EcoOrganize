@@ -1,0 +1,27 @@
+.card {
+    margin: auto;
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+h4 {
+    margin: 0 auto;
+    text-align: center;
+}
+img {
+  margin: 0 auto;
+  display: block;
+}
+
+button {
+    width: 100%;
+}
+
+.card-body a {
+    display: block; 
+    margin-top: 10px; 
+    text-align: right; 
+  }
