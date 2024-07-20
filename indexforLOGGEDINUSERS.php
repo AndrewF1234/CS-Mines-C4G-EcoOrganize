@@ -72,8 +72,16 @@ session_start();
         <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
+    </html>
+      <!--collecting zipcode for the session-->
+      <?php
+      $zip = htmlspecialchars($_POST['zip']);
+      $_SESSION['zip'] = $zip;
+       
+       ?>
 
       <!--petitions in card format-->
+
       <br>
       <div class="card" style="width: 85%; height:auto">
         <div class="card-body">

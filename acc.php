@@ -43,9 +43,9 @@ error_reporting(E_ALL);
 
                   if ($user_data['password'] === $password) {
                       $_SESSION['user_id'] = $user_data['user_id'];
+                      $_SESSION['email'] = $email['email'];
                       echo '<div class="success-message">Login successful!</div>';
-
-
+                      
                       header("Location: index.php");
                       die;
                   }
