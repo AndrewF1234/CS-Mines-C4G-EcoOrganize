@@ -127,11 +127,11 @@
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputName1" class="form-label">Name</label>
-                  <input type="password" class="form-control" id="exampleInputName" name="change-name">
+                  <input type="email" class="form-control" id="exampleInputName" name="change-name">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputZip1" class="form-label">Zip Code</label>
-                    <input type="password" class="form-control" id="exampleInputZip" name="change-zip">
+                    <input type="email" class="form-control" id="exampleInputZip" name="change-zip">
                   </div>
                 <!--button refreshes page on submit so correct info will be displayed up above, and repulled from the database-->
                 <button type="submit" class="btn btn-primary" name="sign-up" href="account.php">Change info</button>
