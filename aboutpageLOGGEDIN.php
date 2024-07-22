@@ -1,6 +1,15 @@
+<?php
+    session_start();
+    include("connection.php");
+    include("functions.php");
+
+    $user_data = check_login($con);
+?>
+
 <html lang="en">
 
-<img src="/images/ecoorganize.png" alt="Ecoorganize logo" width="35%" height="auto" style="margin: 0 auto;display: block;"></a>
+<?php include('title-head.html'); ?>
+<?php include('member-menu-header.html'); ?>
 
 <head>
     <meta charset="UTF-8">
@@ -24,6 +33,12 @@
     </div>
     <div class="maintext">
         <p1> Our goal is to raise awareness and create a space where you can make change with a signature.</p1>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
     </div>
     <style>
         .maintext{
@@ -84,15 +99,15 @@
       <img src="images/Frame.png"Italy" style="width:100%">
     </div>
     
-    <div class="backToMenu">
-        <a href="http://localhost:3000/guestpage.php">Back to Home</a>
-    </div>
+    <!--div class="button">
+        <a href="http://localhost:3000/memberpage.php">Back to Home</a>
+    </div-->
     <style>
         .backToMenu {
           text-align: center;
         }
     </style>        
-    <style>
+    <!--style>
         a:link {
             color: rgb(4, 87, 4);
             background-color: transparent;
@@ -124,7 +139,7 @@
             font-family: "Times New Roman", Times, serif;
             font-size: 25px;
         }
-    </style>
+    </style-->
 
 
 </body>
