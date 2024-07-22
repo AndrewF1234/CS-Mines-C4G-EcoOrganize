@@ -24,66 +24,7 @@
 
 <body>
 
-    <!--card for liked petitions, maybe a scrollable list inside-->
-    <div class="card" style="width: 48%; float:left">
-        <div class="card overflow-auto" id="petitionsbox" style="width: 100%; height:400px; float:left;" >
-            <h2>Your liked movements:</h2>
-
-        <div class="card">
-            <h3>petition name</h3>
-            <p>Insert the description of the petition, pulled from the database here. </p>
-            <a href="#" class="btn btn-primary" style="background-color:rgb(155, 219, 155); border-color:rgb(155, 219, 155)">Link to website</a>
-          </div>
-          <br>
-
-          <div class="card">
-            <h3>petition name</h3>
-            <p>Insert the description of the petition, pulled from the database here. </p>
-            <a href="#" class="btn btn-primary" style="background-color:rgb(155, 219, 155); border-color:rgb(155, 219, 155)">Link to website</a>
-          </div>
-          <br>
-
-          <div class="card">
-            <h3>petition name</h3>
-            <p>Insert the description of the petition, pulled from the database here. </p>
-            <a href="#" class="btn btn-primary" style="background-color:rgb(155, 219, 155); border-color:rgb(155, 219, 155)">Link to website</a>
-          </div>
-          <br>
-
-          <div class="card">
-            <h3>petition name</h3>
-            <p>Insert the description of the petition, pulled from the database here. </p>
-            <a href="#" class="btn btn-primary" style="background-color:rgb(155, 219, 155); border-color:rgb(155, 219, 155)">Link to website</a>
-          </div>
-          <br>
-
-          <div class="card">
-            <h3>petition name</h3>
-            <p>Insert the description of the petition, pulled from the database here. </p>
-            <a href="#" class="btn btn-primary" style="background-color:rgb(155, 219, 155); border-color:rgb(155, 219, 155)">Link to website</a>
-          </div>
-          <br>
-
-        </div>
-
-        <button id="mybutton" style="float:inline-end">
-            Load more liked movements...
-        </button>
-        <script>
-        document.getElementById("mybutton").addEventListener("click", function () {
-            // Create a new <div> element
-            var newDiv = document.createElement('div');
-            newDiv.className = 'card'; // Set the class
-            newDiv.innerHTML = '<h3>petition name</h3><p>Insert the description of the petition, pulled from the database here. </p> <a href="#" class="btn btn-primary" style="background-color:rgb(155, 219, 155); border-color:rgb(155, 219, 155)">Link to website</a> <br>';
-
-            // Append the new <div> to #petitionsbox
-            document.getElementById("petitionsbox").appendChild(newDiv);
-        })
-        </script>
-
-    </div>
-
-    <div class="card" style="width:48%; float:right; height:auto">
+    <div class="card" style="width:100%; float:right; height:auto">
         <h2>Account info:</h2>
         
         <br>
