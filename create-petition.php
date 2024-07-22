@@ -52,7 +52,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="exampleInputLink1" class="form-label">Link to external information</label>
+                <label for="exampleInputLink1" class="form-label">Link to external information (ex: https://www.google.com/)</label>
                 <input type="text" class="form-control" name="link">
             </div>
 
