@@ -58,13 +58,13 @@
           echo "<p>No Petitions Found for this owner.</p>";
         }
 
-  // Free the result set after the loop (important for resource management)
-  mysqli_free_result($result);
-} else {
-  echo "<p>Invalid petition ID.</p>";
-}
-mysqli_close($con);
-?>
+          // Free the result set after the loop (important for resource management)
+          mysqli_free_result($result);
+        } else {
+          echo "<p>Invalid petition ID.</p>";
+        }
+        mysqli_close($con);
+        ?>
 
 
 </body>
